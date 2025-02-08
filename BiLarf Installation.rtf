@@ -1,0 +1,182 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;}
+\margl1440\margr1440\vieww19840\viewh13380\viewkind0
+\deftab720
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 BiLARF Installation Guide (CUDA 11.8, Python 3.10)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 This document provides step-by-step instructions for installing BiLARF on a system equipped with 
+\f0\b CUDA 11.8
+\f1\b0 , 
+\f0\b Python 3.10
+\f1\b0 , and 
+\f0\b Conda
+\f1\b0 .\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 \strokec2 1. Create & Activate Conda Environment\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 conda create --name bilarf_310 python=3.10 -y\
+conda activate bilarf_310\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 2. Install Dependencies\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 If you have a 
+\f2\fs26 requirements.txt
+\f1\fs24 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 pip install -r requirements.txt\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Otherwise, install essential libraries manually:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 pip install numpy absl_py accelerate gin_config imageio imageio[ffmpeg] \\\
+            matplotlib mediapy opencv_contrib_python opencv_python Pillow \\\
+            trimesh pymeshlab xatlas plyfile rawpy ninja scipy scikit-image \\\
+            scikit-learn tensorboard tensorboardX tqdm tensorly\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 3. Install PyTorch (CUDA 11.8)\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1+cu118 \\\
+    -f https://download.pytorch.org/whl/torch_stable.html\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 4. Install GCC & G++ (from conda-forge)\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 conda install -c conda-forge gcc_linux-64 gxx_linux-64 -y\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 5. Set Compiler Environment Variables\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 (Optional) To persist these in your 
+\f2\fs26 ~/.bashrc
+\f1\fs24 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 echo 'export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc' >> ~/.bashrc\
+echo 'export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++' >> ~/.bashrc\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 6. Verify GCC Version\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 $CC --version\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 You should see something like:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 x86_64-conda-linux-gnu-gcc (Anaconda gcc) 11.x\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 7. Install gridencoder (Inside BiLARF Repo)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Change directory to the location of the BiLARF repository with 
+\f2\fs26 gridencoder/
+\f1\fs24 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 cd /path/to/bilarf\
+pip install ./gridencoder\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 If a precompiled wheel fails to install properly:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 pip install --no-build-isolation --no-binary :all: ./gridencoder\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 8. Set LD_LIBRARY_PATH for CUDA + Conda Libraries\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:\\\
+/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib:$LD_LIBRARY_PATH\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 (Optional) Persist in your 
+\f2\fs26 ~/.bashrc
+\f1\fs24 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 echo 'export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib:$LD_LIBRARY_PATH' >> ~/.bashrc\
+source ~/.bashrc\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 9. Test the Installation\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 python -c "import gridencoder; print('gridencoder imported successfully')"\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 You should see:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 gridencoder imported successfully\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 10. (Optional) PyTorch Geometric Modules\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Example for installing 
+\f2\fs26 torch-scatter
+\f1\fs24 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 CUDA=cu118\
+pip install torch-scatter -f https://data.pyg.org/whl/torch-2.0.0+$\{CUDA\}.html\
+\
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 Usage\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Once installed, you can run BiLARF scripts (e.g. 
+\f2\fs26 train_render.sh
+\f1\fs24 ):\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 conda activate bilarf_310\
+bash train_render.sh\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Make sure the environment variables 
+\f2\fs26 CC
+\f1\fs24 , 
+\f2\fs26 CXX
+\f1\fs24 , and 
+\f2\fs26 LD_LIBRARY_PATH
+\f1\fs24  remain properly set.\
+}
