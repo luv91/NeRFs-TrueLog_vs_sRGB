@@ -1,0 +1,772 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;\f2\froman\fcharset0 Times-Roman;
+\f3\fswiss\fcharset0 Helvetica;\f4\froman\fcharset0 TimesNewRomanPS-BoldMT;\f5\fmodern\fcharset0 CourierNewPS-BoldMT;
+\f6\froman\fcharset0 TimesNewRomanPSMT;\f7\fmodern\fcharset0 CourierNewPSMT;\f8\fswiss\fcharset0 Helvetica-Light;
+\f9\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red179\green179\blue179;\red0\green0\blue0;
+\red65\green69\blue74;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0\c84706;\cssrgb\c75294\c75294\c75294;\csgray\c0;
+\cssrgb\c32157\c34118\c36078;\cssrgb\c100000\c100000\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww21280\viewh15580\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs32 \cf0 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 path:\
+/home/rathod.rak/Luv/NeRFs/bilarf
+\f0\b0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Certainly! Here's a step-by-step recap of the commands and steps we've followed to address the issue of using the correct GCC version for compiling the gridencoder package:\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 1. Install GCC and G++ Using Conda\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 First, we installed a newer version of GCC and G++ using Conda:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+conda install -c conda-forge gcc_linux-64 gxx_linux-64\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 2. Set Environment Variables to Use Conda's GCC and G++\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 Next, we set the environment variables to point to the Conda-installed GCC and G++:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 3. Verify GCC and G++ Versions\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 We then verified that the correct versions of GCC and G++ were being used:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+$CC --version\
+# Output should show: x86_64-conda-linux-gnu-gcc (Anaconda gcc) 11.2.0\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 4. Update the PATH (if necessary)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 We attempted to ensure that the Conda environment's bin directory was prioritized in the PATH, though this was eventually managed by directly setting CC and CXX:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+export PATH=$CONDA_PREFIX/bin:$PATH\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 5. Reattempt the Installation of gridencoder\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 Finally, we reattempted to install the gridencoder package using the correct compiler:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+pip install ./gridencoder\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 If the standard installation failed, we would use the following command to force the package to be built from source without binary wheels:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+pip install --no-build-isolation --no-binary :all: ./gridencoder\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Summary\
+echo 'export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc' >> ~/.bashrc\
+echo 'export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++' >> ~/.bashrc\
+source ~/.bashrc\
+\
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH\
+python -c "import gridencoder; print('gridencoder imported successfully')"\
+\
+echo 'export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH' >> ~/.bashrc\
+\
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/anaconda3/2022.05/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib\
+(bilarf) [rathod.rak@d1028 bilarf]$ echo 'export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib' >> ~/.bashrc\
+(bilarf) [rathod.rak@d1028 bilarf]$ source ~/.bashrc\
+sed -i 's/^export LD_LIBRARY_PATH=\\$CONDA_PREFIX\\/lib:\\$LD_LIBRARY_PATH/# &/' ~/.bashrc\
+\
+(bilarf) [rathod.rak@d1028 bilarf]$ \
+source ~/.bashrc\
+\
+The basic file lookedlike:\
+\
+# Source global definitions\
+if [ -f /etc/bashrc ]; then\
+        . /etc/bashrc\
+fi\
+\
+# Uncomment the following line if you don't like systemctl's auto-paging feature:\
+# export SYSTEMD_PAGER=\
+\
+# User specific aliases and functions\
+\
+\
+# >>> conda initialize >>>\
+# !! Contents within this block are managed by 'conda init' !!\
+__conda_setup="$('/shared/centos7/anaconda3/2022.05/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"\
+if [ $? -eq 0 ]; then\
+    eval "$__conda_setup"\
+else\
+    if [ -f "/shared/centos7/anaconda3/2022.05/etc/profile.d/conda.sh" ]; then\
+        . "/shared/centos7/anaconda3/2022.05/etc/profile.d/conda.sh"\
+    else\
+        export PATH="/shared/centos7/anaconda3/2022.05/bin:$PATH"\
+    fi\
+fi\
+unset __conda_setup\
+# <<< conda initialize <<<\
+# export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH\
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib\
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+~                                                                                                                                                        \
+"~/.bashrc" 31L, 1033C                   \
+(base) [rathod.rak@d1028 bilarf]$ \
+(base) [rathod.rak@d1028 bilarf]$ vi ~/.bashrc\
+(base) [rathod.rak@d1028 bilarf]$ conda activate bilarf\
+(bilarf) [rathod.rak@d1028 bilarf]$ echo $LD_LIBRARY_PATH\
+/shared/centos7/anaconda3/2022.05/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib\
+(bilarf) [rathod.rak@d1028 bilarf]$ echo $CC\
+/home/rathod.rak/.conda/envs/bilarf/bin/x86_64-conda-linux-gnu-cc\
+(bilarf) [rathod.rak@d1028 bilarf]$ echo $CXX\
+/home/rathod.rak/.conda/envs/bilarf/bin/x86_64-conda-linux-gnu-c++\
+(bilarf) [rathod.rak@d1028 bilarf]$ \
+(bilarf) [rathod.rak@d1028 bilarf]$ \
+(bilarf) [rathod.rak@d1028 bilarf]$ \
+(bilarf) [rathod.rak@d1028 bilarf]$ export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+(bilarf) [rathod.rak@d1028 bilarf]$ python -c "import gridencoder; print('gridencoder imported successfully')"\
+gridencoder imported successfully\
+(bilarf) [rathod.rak@d1028 bilarf]$ \
+(bilarf) [rathod.rak@d1028 bilarf]$ python -c "import gridencoder; print('gridencoder imported successfully')"\
+gridencoder imported successfully\
+(bilarf) [rathod.rak@d1028 bilarf]$ \
+\
+# ==>\
+Most important\
+path:\
+/home/rathod.rak/Luv/NeRFs/bilarf\
+#\
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+python -c "import gridencoder; print('gridencoder imported successfully')"\
+\
+\
+# =====++>\
+\
+Steps again:\
+Step 1: Install GCC and G++\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 First, install the required GCC and G++ versions using Conda:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+conda install -c conda-forge gcc_linux-64 gxx_linux-64\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Step 2: Set Environment Variables\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 Set the environment variables to ensure Conda's GCC and G++ are used:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Step 3: Verify the Installed Versions\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 Verify that the correct versions of GCC and G++ are being used:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+$CC --version\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 This should display something like:\
+\pard\pardeftab720\partightenfactor0
+\cf0 plaintext\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+x86_64-conda-linux-gnu-gcc (Anaconda gcc) 11.2.0\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Step 4: Install the gridencoder Package\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 Try installing the gridencoder package:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+pip install ./gridencoder\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 If the standard installation fails, use the following command to force the package to be built from source:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+pip install --no-build-isolation --no-binary :all: ./gridencoder\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Step 5: Adjust the LD_LIBRARY_PATH\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 To ensure that the correct libraries are loaded when using the gridencoder package, you need to set the LD_LIBRARY_PATH environment variable. Do this with the following command:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Step 6: Verify the Installation\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 Check if the gridencoder package is correctly imported:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+python -c "import gridencoder; print('gridencoder imported successfully')"\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 You should see the message: gridencoder imported successfully.\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Step 7: Automate the Environment Setup\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 To avoid manually setting the LD_LIBRARY_PATH every time, you can add the following lines to your .bashrc file:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Open the .bashrc file in your home directory:\uc0\u8232 bash\cf2 \cb3 Copy code\cf0 \cb1 \uc0\u8232 \u8232 vi ~/.bashrc\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\uc0\u8232 \u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Add the following lines at the end of the file:\uc0\u8232 bash\cf2 \cb3 Copy code\cf0 \cb1 \uc0\u8232 \u8232 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	4	}\expnd0\expndtw0\kerning0
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	5	}\expnd0\expndtw0\kerning0
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	6	}\expnd0\expndtw0\kerning0
+\uc0\u8232 \u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	7	}\expnd0\expndtw0\kerning0
+Save and exit the editor (press Esc, then type :wq and press Enter).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	8	}\expnd0\expndtw0\kerning0
+Apply the changes:\uc0\u8232 bash\cf2 \cb3 Copy code\cf0 \cb1 \uc0\u8232 \u8232 source ~/.bashrc\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	9	}\expnd0\expndtw0\kerning0
+\uc0\u8232 \u8232 \
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 Step 8: Test the Environment\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 Activate your Conda environment and test the setup:\
+\pard\pardeftab720\partightenfactor0
+\cf0 bash\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Copy code\cf0 \cb1 \
+conda activate bilarf\
+python -c "import gridencoder; print('gridencoder imported successfully')"\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 This should now work correctly without requiring any additional manual steps.\
+\
+# =====+>\
+Only works with python =3.10 and cuda11.8; not working with cuda=12.1\
+\
+History commands: \
+\
+conda create --name bilarf_py310_v2 python=3.10\
+\
+conda create --name bilarf_py310_v2 python=3.9\
+  801  conda activate bilarf_py310_v2\
+  802 pip install torch==2.2.0+cu121 torchvision==0.17.0+cu121 torchaudio==2.2.0+cu121 -f https://download.pytorch.org/whl/torch_stable.html\
+Or \
+pip install torch==2.0.0+cu117 torchvision==0.15.0+cu117 torchaudio==2.0.0+cu117 -f https://download.pytorch.org/whl/torch_stable.html\
+\
+Or \
+pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html\
+\
+  804  pip install numpy absl_py accelerate gin_config imageio imageio[ffmpeg] matplotlib mediapy opencv_contrib_python opencv_python Pillow trimesh pymeshlab xatlas plyfile rawpy ninja scipy scikit-image scikit-learn tensorboard tensorboardX tqdm tensorly\
+  805  pip install ./gridencoder\
+  806  conda install -c conda-forge gcc_linux-64 gxx_linux-64\
+  807  export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+  808  export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+\
+Including them in basic:\
+\pard\pardeftab720\partightenfactor0
+\cf0 echo 'export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc' >> ~/.bashrc \
+echo 'export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++' >> ~/.bashrc \
+\
+source ~/.bashrc\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0   809  $CC --version\
+  810  $CXX --version\
+  811  pip install ./gridencoder\
+  812  python -c "import gridencoder; print('gridencoder imported successfully')"\
+  813  export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+\
+Or for cuda 12.1:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/12.1/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+\
+Check it by: echo $LD_LIBRARY_PATH\
+\
+Putting this in basic rc file:\
+\
+echo 'export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/12.1/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib' >> ~/.bashrc\
+\
+source ~/.bashrc\
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0   814  python -c "import gridencoder; print('gridencoder imported successfully')"\
+\
+# ========> Followed the following steps:\
+I cleaned basic file also:\
+\pard\pardeftab720\partightenfactor0
+\cf0 > ~/.bashrc. \'97> use this to clean the bashrc completely.. ask got for 4 steps. \
+cat ~/.bashrc\
+\
+source /shared/centos7/anaconda3/2022.05/etc/profile.d/conda.sh\
+conda activate bilarf_310\
+\
+export PS1="[\\u@\\h \\W]\\$ "\
+source /shared/centos7/anaconda3/2022.05/etc/profile.d/conda.sh\
+\
+\
+# =========> This is working below commands\'85 python 3.10; cuda 11.8\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 conda create --name bilarf_310 python=3.10\
+conda activate bilarf_310\
+cd bilarf\
+pip install -r requirements.txt\
+pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html\
+conda install -c conda-forge gcc_linux-64 cxx_linux-64\
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+$CC --version\
+pip install ./gridencoder\
+\'97> the next command won\'92t work unless you run export LD_LIBRARY_PATH\
+python -c "import gridencoder; print('gridencoder imported successfully')"\
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+python -c "import gridencoder; print('gridencoder imported successfully')"\
+CUDA=cu118\
+pip install torch-scatter -f https://data.pyg.org/whl/torch-2.0.0+$\{CUDA\}.html\
+sh scripts/train_render.sh\
+# ===+>\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf0 python -c " import os import shutil DATA_DIR = '/work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010620_LLFF_Processed' src = os.path.join(DATA_DIR, 'colmap') dst = DATA_DIR # Move each file from colmap to the parent folder for filename in os.listdir(src): shutil.move(os.path.join(src, filename), os.path.join(dst, filename)) print('Files moved successfully') "\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf0 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 For bilarf run the following directly:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf0 # Navigate to the home directory\
+cd ~\
+\
+# Activate the Conda environment\
+conda activate bilarf_310\
+\
+# Change directory to NeRFs/bilarf\
+cd NeRFs/bilarf\
+\
+# Set the compiler paths\
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc\
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++\
+\
+# Update the library path\
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:/shared/centos7/cuda/11.8/lib64:/shared/centos7/nodejs/14.15.4/lib:/shared/centos7/anaconda3/2022.05/lib\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs32 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+
+\f3\fs24 \cf0 \kerning1\expnd0\expndtw0 {{\NeXTGraphic Pasted Graphic.png \width20040 \height8800 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs32 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 # ======>\
+For custom data, we would need clomp:\
+conda install -c conda-forge colmap --strict-channel-priority -y\
+  kyun kaarna chahte Hain.. \
+\
+\
+ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/sRGBNeRFStudioProcessed/GX010660.MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/sRGBNeRFStudioProcessed/GX010660_LLFF_Processed\
+\
+ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010661.MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010661_LLFF_Processed\
+\
+# =====++>\
+\
+\pard\pardeftab720\ri0\sa240\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 # ======\
+To run colmap on nerf studio in discovery.. \
+cd ~\
+conda activate nerfstudio\
+export LD_LIBRARY_PATH=/home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH\
+1\
+\
+Colmap wont run buit, so need the command below:\
+export LD_LIBRARY_PATH=/home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH\
+# =======\
+\pard\pardeftab720\ri0\sa240\partightenfactor0
+
+\f3\fs22 \cf0 Ns-process-data video --data /Users/luv/Movies/GoPro/GX010373.MP4 --output-dir /Users/luv/Movies/GoPro/NeRFStudio/GX010373_stars_llff\
+\
+\
+\pard\pardeftab720\ri0\sa240\partightenfactor0
+
+\f0\fs32 \cf0 /home/verma.lu/NeRFs/nerf_synthetic_data_all_types/nerf_synthetic/strat\
+\pard\pardeftab720\ri0\sa280\partightenfactor0
+
+\f1\b \cf0 /home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/nerfstudio/utils\
+\
+(nerfstudio) bash-4.2$ find $HOME -name 'process_data.py'\
+\
+/home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/scripts/process_data.py\
+\
+/home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/nerfstudio/utils\
+(nerfstudio) bash-4.2$ ls\
+colmap_utils.py  colors.py  decorators.py  __init__.py        io.py    misc.py          poses.py     profiler.py  rich_utils.py        writer.py\
+colormaps.py     comms.py   eval_utils.py  install_checks.py  math.py  plotly_utils.py  printing.py  __pycache__  tensor_dataclass.py\
+(nerfstudio) bash-4.2$ pwd\
+\
+\
+# c#========\
+Manually copy via cat and then make change save and then using vi and delete the current contet via (ggdG), press I (for insert), then copy the cconetn.. and :wq\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\f4\fs27 \cf0 Steps to Manually Download the File:\
+
+\fs24 Step 1: Use 
+\f5\fs20 cat
+\f4\fs24  to Output the File's Contents\
+
+\f6\b0 You can use the 
+\f7\fs20 cat
+\f6\fs24  command to display the contents of the 
+\f7\fs20 process_data.py
+\f6\fs24  file in your terminal. From there, you can manually copy it:\
+\pard\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\pardeftab720\ri0\partightenfactor0
+
+\f7\fs20 \cf0 bash\
+Copy code\
+cat /home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/scripts/process_data.py\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+
+\f6\fs24 \cf0 This will print the entire contents of the file to the terminal.\
+
+\f4\b Step 2: Copy the Output\
+
+\f6\b0 Select all the text in your terminal (depending on your terminal software, this may be done with your mouse or by using a keyboard shortcut like 
+\f7\fs20 Ctrl+Shift+C
+\f6\fs24 ).\
+
+\f4\b Step 3: Paste and Save Locally\
+
+\f6\b0 Open a text editor on your local machine (like Notepad, VS Code, or any other) and paste the contents of the file. Save the file as 
+\f7\fs20 process_data.py
+\f6\fs24  on your local machine, for example in 
+\f7\fs20 C:\\Users\\luvve\\Downloads
+\f6\fs24 .\
+
+\f4\b Step 4: Edit the File\
+
+\f6\b0 Once you've downloaded the file manually, you can make your changes to it.\
+
+\f4\b Step 5: Upload the File Back (Manually)\
+
+\f6\b0 If you can't use 
+\f7\fs20 scp
+\f6\fs24  or 
+\f7\fs20 sftp
+\f6\fs24 , but can edit the file manually, you can upload it back to the remote machine by either:\
+\pard\tx720\pardeftab720\li720\fi-360\ri0\sb100\sa100\partightenfactor0
+\ls2\ilvl0
+\f4\b \cf0 1.	Using 
+\f5\fs20 vi
+\f4\fs24  to manually paste
+\f6\b0  the modified contents into the file.\
+\ls2\ilvl0
+\f4\b 2.	Emailing yourself
+\f6\b0  the modified file and using the remote server to download it.\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 To upload manually using 
+\f7\fs20 vi
+\f6\fs24 :\
+\pard\tx720\pardeftab720\li720\fi-360\ri0\sb100\sa100\partightenfactor0
+\ls3\ilvl0\cf0 1.	Open the file on the server with 
+\f7\fs20 vi
+\f6\fs24 :\
+\pard\tx916\tx1832\tx2748\tx3664\tx4580\tx5496\tx6412\tx7328\tx8244\tx9160\tx10076\tx10992\tx11908\tx12824\tx13740\tx14656\pardeftab720\li720\ri0\partightenfactor0
+
+\f7\fs20 \cf0 bash\
+Copy code\
+vi /home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/scripts/process_data.py\
+\pard\tx720\pardeftab720\li720\fi-360\ri0\sb100\sa100\partightenfactor0
+\ls4\ilvl0
+\f6\fs24 \cf0 2.	In 
+\f7\fs20 vi
+\f6\fs24 , delete all the current contents by pressing 
+\f7\fs20 ggdG
+\f6\fs24 .\
+3.	Press 
+\f7\fs20 i
+\f6\fs24  to go into insert mode, and paste the new contents that you copied from your local machine.\
+4.	Once pasted, press 
+\f7\fs20 Esc
+\f6\fs24 , then type 
+\f7\fs20 :wq
+\f6\fs24  to save and quit.\
+\pard\pardeftab720\ri0\sb100\sa100\partightenfactor0
+\cf0 This will update the 
+\f7\fs20 process_data.py
+\f6\fs24  file with your local changes.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 \expnd0\expndtw0\kerning0
+mv colmap/* .
+\f6 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\ri0\sa280\partightenfactor0
+
+\f1\b\fs32 \cf0  ====?\
+Commands to run colmap:\
+Conda activate nerfstudio\
+Ns-process-data \'96help (this should run nerfstudio), this is a check.. \
+Then export library needeed\
+\pard\pardeftab720\ri0\sa240\partightenfactor0
+
+\f0\b0 \cf0 export LD_LIBRARY_PATH=/home/verma.lu/.conda/envs/nerfstudio/lib/python3.10/site-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH\
+\pard\pardeftab720\ri0\sa280\partightenfactor0
+
+\f1\b \cf0 command to run for running .py:\
+\pard\pardeftab720\ri0\sa240\partightenfactor0
+
+\f3\b0\fs22 \cf0 Ns-process-data video --data /Users/luv/Movies/GoPro/GX010373.MP4 --output-dir /Users/luv/Movies/GoPro/NeRFStudio/GX010373_stars_llff\
+\pard\pardeftab720\ri0\sa280\partightenfactor0
+
+\f1\b\fs32 \cf0 To change the process_data.py file, follow the manual steps\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 \expnd0\expndtw0\kerning0
+\
+# -======.\
+\
+Dat Ian work directory.. \
+For data\'85 thing is:\
+(base) bash-4.2$ cd ~\
+(base) bash-4.2$ pwd\
+/home/verma.lu\
+(base) bash-4.2$ ls /work/SuperResolutionData\
+autonomous_driving  colorConstancy  data  gfsr-models  imagenet  irectory  istd-pretrained.zip  nerf  ShadowRemovalData  ShadowRemovalResults  spectralRatio  spectralRatioSet  superdata  temp\
+(base) bash-4.2$ \
+(base) bash-4.2$ ls /work/SuperResolutionData/nerf\
+data\
+(base) bash-4.2$ \
+(base) bash-4.2$ cd data\
+bash: cd: data: No such file or directory\
+(base) bash-4.2$ ls /work/SuperResolutionData/nerf/data\
+GX010195.mp4  GX010196.MP4  GX010198.MP4\
+(base) bash-4.2$ \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 # ======+>\
+The directory of Professor.. \uc0\u8232 /work/SuperResolutionData\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0 \cf0 \
+# ===+>\
+ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/Log/GX010463.MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010463_LLFF_Processed\
+\
+ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/Log/GX010541.MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010541_LLFF_Processed\
+# ===+>\
+sRGB:\
+sRGBNeRFStudioProcessed\
+ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/sRGB/GX010557.MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/sRGBNeRFStudioProcessed/GX010557_LLFF_Processed\
+\
+/work/SuperResolutionData/LuvNeRF/videos/sRGBNeRFStudioProcessed/GX010541_LLFF_Processed\
+\
+ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/sRGB/GX010476.MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/sRGBNeRFStudioProcessed/GX010476_LLFF_Processed\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b \cf0 # ======= + > \
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/Log/
+\fs22 \cf4 \kerning1\expnd0\expndtw0 \CocoaLigature0 GX010430_llff_all_worked
+\fs32 \cf0 \expnd0\expndtw0\kerning0
+\CocoaLigature1 .MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010430_LLFF_Processed\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b \cf0 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0 \cf0 ns-process-data video --data /work/SuperResolutionData/LuvNeRF/videos/Log/GX010478.MP4 --output-dir /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010478_LLFF_Processed
+\f1\b \
+\pard\pardeftab720\sa280\partightenfactor0
+\cf0 GX010468.MP4\
+\
+mv /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010555_LLFF_Processed/colmap/* /work/SuperResolutionData/LuvNeRF/videos/LogNeRFStudioProcessed/GX010555_LLFF_Processed/\
+\
+Constructed a conversational memory system framework with\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f8\b0\fs30 \AppleTypeServices\AppleTypeServicesF65539 \cf5 \cb6 Engineered an advanced conversational memory system in LangChain that integrated multi-threading capabilities; improved user engagement metrics by 25% and reduced average response times from 10 seconds to 4 seconds.\
+\
+Engineered an advanced conversational memory system in LangChain, integrating multi-threading capabilities, leading to optimized text streaming and reduced average response time from 2 seconds to 0.5 seconds
+\f1\b\fs32 \AppleTypeServices \cf0 \cb1 \
+\
+# ===+>\
+\
+For rawnerfs\
+\
+conda activate RawNeRFs\
+\
+export LD_LIBRARY_PATH=/shared/centos7/cuda/12.1/lib64:/shared/centos7/cuda/12.1/extras/CUPTI/lib64:$LD_LIBRARY_PATH\
+\
+export PATH=/shared/centos7/cuda/12.1/bin:$PATH\
+\
+export CUDA_HOME=/shared/centos7/cuda/12.1\
+\
+pip install --upgrade "jaxlib==0.4.28+cuda12.cudnn89" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html\
+\
+pip install flax==0.8.5\
+\
+\
+bash /home/verma.lu/NeRFs/RawNeRFs/scripts/local_colmap_and_resize.sh /work/SuperResolutionData/LuvNeRF/videos/sRGBNeRFStudioProcessed/GX010557_LLFF_Processed/\
+\
+# ==+># ==+># ==+># ==+># ==+># ==+>\
+error:\
+mogrify: /shared/centos7/anaconda3/2022.05/lib/./libuuid.so.1: no version information available (required by /lib64/libSM.so.6)\
+mogrify: /shared/centos7/anaconda3/2022.05/lib/./libuuid.so.1: no version information available (required by /lib64/libSM.so.6)\
+\
+Solution:\
+\
+export LD_LIBRARY_PATH=/shared/centos7/anaconda3/2022.05/lib:$LD_LIBRARY_PATH\
+\
+conda install -c conda-forge imagemagick\
+\
+Check the files\
+\
+cat /work/SuperResolutionData/LuvNeRF/videos/sRGBNeRFStudioProcessed/GX010557_LLFF_Processed/transforms.json\
+\
+# ==+>\
+Assuming that you need images for all of them right?? You can see or show how god or bad the image is??\
+Reconstructed images?\
+Now those reconstructions can be from the 80 mil model right?? \
+\
+Bilarf images for : 
+\f9\b0\fs26 \cb6 GX010549_LLFF_Processed \'97> srGB blue color \'97> done\
+
+\f1\b\fs32 \cb1 Bilarf  600 \'97> Running \'97> true true log (just pseudo log)\
+# ====+>\
+Bilarf true log: 590 \'97> Running \
+540\'97> running \'97> train_render.sh\
+\
+# ==>\
+570 is showing a grate deal of improvement \'97> have to get the images.. \
+\
+# =====>\
+Instead of putting it after the network.. \
+\
+Converting goPro log images \'97> true Log --> normalizing between 0 and 1 making sure that \
+\
+# ======+> # ======> # =======> # =======++> # =======+>\
+Instead of putting it on the back side.. \'97> \
+# --> \
+\
+# =====># =====># =====># =====># =====># =====># =====># =====>\
+Comparative visualization\'85 \'97> \
+\
+# ==+>\
+Well Lit Scenes?? \'97> Best Looking scenes?? \
+\
+Sanity check \'97> Using the codebase // \'97> Images there data.. // \'97> what they are producing on their data.. // \'97> how long have you train the network.. // \'97> \
+\
+\
+# =====># =====># =====># =====># =====># =====># =====># =====># =====># =====># =====># =====>\
+\
+\'97\'97\'97> \
+\
+15G     /work/SuperResolutionData/LuvNeRF/nerf_render_test_vis_zipped\
+(base) [verma.lu@c0184 NeRFs]$ \
+(base) [verma.lu@c0184 NeRFs]$ ls /work/SuperResolutionData/LuvNeRF/nerf_render_test_vis_zipped\
+GX010396_LLFF_Processed_true_log.zip  GX010624_LLFF_Processed.zip\
+GX010396_LLFF_Processed.zip           GX010625_LLFF_Processed_true_log.zip\
+GX010397_LLFF_Processed.zip           GX010625_LLFF_Processed.zip\
+GX010404_LLFF_Processed.zip           GX010628_LLFF_Processed.zip\
+GX010405_LLFF_Processed_true_log.zip  GX010629_LLFF_Processed_true_log.zip\
+GX010405_LLFF_Processed.zip           GX010629_LLFF_Processed.zip\
+GX010416_LLFF_Processed_true_log.zip  GX010630_LLFF_Processed.zip\
+GX010416_LLFF_Processed.zip           GX010631_LLFF_Processed_true_log.zip\
+GX010417_LLFF_Processed.zip           GX010636_LLFF_Processed_true_log.zip\
+GX010454_LLFF_Processed.zip           GX010636_LLFF_Processed.zip\
+GX010455_LLFF_Processed_true_log.zip  GX010637_LLFF_Processed.zip\
+GX010455_LLFF_Processed.zip           GX010639_LLFF_Processed.zip\
+GX010619_LLFF_Processed.zip           GX010640_LLFF_Processed_true_log.zip\
+GX010620_LLFF_Processed_true_log.zip  GX010640_LLFF_Processed.zip\
+GX010620_LLFF_Processed.zip\
+(base) [verma.lu@c0184 NeRFs]$ \
+\
+}
